@@ -1,6 +1,6 @@
 import React from "react";
 import FormWrapper from "../components/Form/FormWrapper";
-import { useAppDispatch } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { addUser } from "../store/userSlice";
 import { FieldConfig } from "../types/FieldConfig";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,7 @@ type FormData = {
 const CreateUser = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const users = useAppSelector((state) => state.user.users);
 
   const fields: FieldConfig<FormData>[] = [
     {
@@ -57,6 +58,14 @@ const CreateUser = () => {
   ];
 
   const handleSubmit = (data: FormData) => {
+    const isEmailTaken = users.some((user) => user.email === data.email);
+
+    if (isEmailTaken) {
+      alert(
+        "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta girin."
+      );
+      return;
+    }
     dispatch(addUser(data));
     navigate("/user");
   };

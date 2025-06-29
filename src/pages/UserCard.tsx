@@ -15,6 +15,8 @@ const UserCard = () => {
   };
 
   console.log(users);
+  console.log(currentUser);
+
   return (
     <div className="p-6 flex flex-wrap gap-6 justify-center">
       {users.map((user, index) => {
@@ -39,8 +41,7 @@ const UserCard = () => {
 
             <div className="pt-14 pb-4 px-6 text-center">
               <h3 className="text-lg font-semibold">{user.fullname}</h3>
-              <p className="text-gray-500 text-sm">{ user.
-role ?? "Unknown"}</p>
+              <p className="text-gray-500 text-sm">{user.role ?? "Unknown"}</p>
             </div>
 
             {isCurrent && (
