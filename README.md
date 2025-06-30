@@ -21,7 +21,15 @@ Bu proje, BiLira Frontend Developer Code Challenge kapsamında geliştirilmiş b
 - Redux Toolkit
 - Redux Persist
 - React Hook Form
+- React Toastify
 - Heroicons (avatar için)
 
-## 📁 Proje Yapısı
+
+## 🚀 Proje Kurulumu
+
+```bash
+git clone https://github.com/kullanici-adin/bilira-code-challenge.git
+cd bilira-code-challenge
+npm install
+npm run dev
 

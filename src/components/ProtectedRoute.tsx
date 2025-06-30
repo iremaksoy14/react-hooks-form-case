@@ -9,7 +9,6 @@ type Props = {
 const ProtectedRoute = ({ children }: Props) => {
   const currentUser = useAppSelector((state) => state.user.currentUser);
 
-  console.log("currentUser", currentUser);
   if (!currentUser) {
     return <Navigate to="/" replace />;
   }

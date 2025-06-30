@@ -14,9 +14,6 @@ const UserCard = () => {
     navigate("/");
   };
 
-  console.log(users);
-  console.log(currentUser);
-
   return (
     <div className="p-6 flex flex-wrap gap-6 justify-center">
       {users.map((user, index) => {
@@ -27,7 +24,7 @@ const UserCard = () => {
             key={index}
             className="w-[300px] rounded-xl shadow-lg overflow-hidden bg-white relative"
           >
-            <div className="h-28 bg-cyan-400 flex justify-center items-end relative">
+            <div className="h-28 bg-cyan-500 flex justify-center items-end relative">
               <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white absolute -bottom-10">
                 <img
                   src={`https://ui-avatars.com/api/?name=${encodeURIComponent(

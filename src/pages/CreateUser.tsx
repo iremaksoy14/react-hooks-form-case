@@ -1,10 +1,13 @@
 import React from "react";
-import FormWrapper from "../components/Form/FormWrapper";
+import FormWrapper from "../components/form/FormWrapper";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { addUser } from "../store/userSlice";
 import { FieldConfig } from "../types/FieldConfig";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type FormData = {
   fullname: string;
@@ -61,8 +64,16 @@ const CreateUser = () => {
     const isEmailTaken = users.some((user) => user.email === data.email);
 
     if (isEmailTaken) {
-      alert(
-        "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta girin."
+      toast.error(
+        " Bu e-posta zaten kayıtlı. Lütfen farklı bir e-posta girin.",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
       );
       return;
     }
@@ -71,16 +82,15 @@ const CreateUser = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-400 to-teal-500 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
-        {/* Header & Avatar */}
-        <div className="h-28 bg-cyan-400 flex justify-center items-end relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r bg-cyan-500 to-teal-500 px-4">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden relative">
+        <ToastContainer />
+
+        <div className="h-28 bg-blue-600 flex justify-center items-end relative">
           <div className="w-20 h-20 rounded-full bg-white border-4 border-white absolute -bottom-10 flex items-center justify-center text-2xl font-bold text-white bg-gradient-to-tr from-indigo-500 to-blue-600">
             👤
           </div>
         </div>
-
-        {/* Form */}
         <div className="pt-14 pb-8 px-6">
           <h2 className="text-xl font-semibold text-center mb-4 text-gray-800">
             Create New User
