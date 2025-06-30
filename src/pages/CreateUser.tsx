@@ -1,5 +1,5 @@
 import React from "react";
-import FormWrapper from "../components/form/FormWrapper";
+import FormWrapper from "../components/Form/FormWrapper";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { addUser } from "../store/userSlice";
 import { FieldConfig } from "../types/FieldConfig";
